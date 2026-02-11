@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="gl">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario PEDIDO MF0492_3</title>
+</head>
+<body>
+<h1>Formulario de pedido</h1>
+
+<!-- utilizamos {% if erro %} para que Flask verifique que el dato es correcto -->
+<!-- utilizamos {{ erro }} para mostrar el mensaje de validación con respecto al if anterior -->
+<!-- {% endif %} evitará que haya párrafos vacíos cuando no haya mensajes -->
+
+{% if erro %}
+    <p style="color: red;">{{ erro }}</p>
+{% endif %}
+
+{% if mensaxe%}
+    <p style="color: green;">{{ mensaxe }}</p>
+{% endif %}
+
+<!-- Formulario para enviar os datos do pedido -->
+
+<form action="/submit" method="post">
+    <label for="nome_cliente">Nome do cliente:</label><br>
+    <input type="text" id="nome_cliente" name="nome_cliente" required>
+    <label for="producto">Nome do produto:</label><br>
+    <input type="text" id="producto" name="producto" required>
+    <label for="cantidade">Cantidade:</label><br>
+    <input type="number" id="cantidade" name="cantidade" min="1" required>
+    <label for="data_pedido">Data do Pedido:</label><br>
+    <input type="date" id="data_pedido" name="data_pedido" required>
+    <br><br>
+    <input type="submit" value="Enviar Pedido">
+</form>
+</body>
+</html>
